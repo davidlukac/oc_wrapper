@@ -6,8 +6,8 @@ install:
 - pipenv install --dev
 script:
 - bin/run-tests.sh
-- pipenv run python setup.py sdist bdist_wheel
 deploy:
+  skip_cleanup: true
   provider: pypi
   user: david.lukac
   password:

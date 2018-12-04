@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="oc_wrapper",
-    version="0.1.0-BUILD-SNAPSHOT",
+    version="0.1.0-dev",
     author="David Lukac",
-    author_email="",
-    description="",
+    author_email="david.lukac@gmail.com",
+    description="Python wrapper for OpenShift CLI (oc) command line tool.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/davidlukac/oc_wrapper",

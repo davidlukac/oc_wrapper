@@ -1,0 +1,14 @@
+language: python
+python:
+- '2.7'
+install:
+- pip install pipenv
+- pipenv install --dev
+script:
+- bin/run-tests.sh
+- pipenv run python setup.py sdist bdist_wheel
+deploy:
+  provider: pypi
+  user: david.lukac
+  password:
+    secure: odu6nSOYojsI3uWRFo3MArtlzTGWTS+toFUUnlR2lBspT8t2omyICRL3+h6TO+DvDLXPubKrrGJaB+hoYFqWM3nYEM6RYEBcVVO9/S1Xopl+Oh61pGzWQ9gqA4HWWOewMuxX93vizU+Be6nYcqW2MPachc9S2iXcJEzk0Htf2UNVHulEkuNJb7bdj5f7+kjx9p47woV1+rSCHfRFY555XGqtQ1H00OUp8fWMngjWzM3jR7iE5WqK1OI87945O1lMKn3SdtoPvw+lMp0M3AqHBMkjECTUFaI6G4TzsCqNhXBPNJ/6wZsulh8JBLR37O3xoHrmjqCidMerYgSu87o/MgXRc/lJ849C7FbvoRnrb9cDXpkHnfp9XplYUCanqp4ezAbT6vsloy0ynrdIzXYKyCIhi7siD+RYztsaWqgPglpUWZiaCHRjjg5i+/LO9YH0rw+qeyf5Z9KumCDh+TQ8t3XzPeGJ5m/tGXxO4nyr8X1ccvpK1nxRc/UWErKTO8YHskyz4OR95RW9DeIaTM/0BzFN8u+34e3AzdFlm0Ypa2gnnSKmR84J4DLqPBsBT9uXfONNnLUyxMvTd9B/g9RSQF0TKxsOxu9LlZERK08udqZdLJoxl6kPtu3SJD34SHvwHAR0zgML67y2sHKpMq4vvxedzpyAuD2cbhK3u8WtMso=

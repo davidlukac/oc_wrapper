@@ -9,6 +9,9 @@ pytest-cov = "*"
 mock = "*"
 
 [packages]
+python-dateutil = "*"
+pytz = "*"
+typing = "*"
 
 [requires]
 python_version = "2.7"

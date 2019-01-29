@@ -8,6 +8,9 @@ script:
 - bin/run-tests.sh
 deploy:
   skip_cleanup: true
+  on:
+    branch: master
+    tags: true
   provider: pypi
   user: david.lukac
   password:

@@ -1,12 +1,15 @@
 import json
 import subprocess
+from subprocess import CalledProcessError
 
 from typing import List
 
 from oc_wrapper.model.RoleBinding import RoleBinding
+from oc_wrapper.tools import called_process_error_repr
 
 
 class RoleBindings(object):
+    CMD_ROLEBINDINGS = 'rolebindings'
 
     def __init__(self, ci_mode=True):
         super(RoleBindings, self).__init__()
@@ -20,12 +23,18 @@ class RoleBindings(object):
         else:
             namespace_arg = ['--namespace', str(namespace)]
 
-        cmd = ['oc', 'get', 'rolebindings'] + namespace_arg + ['--output=json']
+        cmd = ['oc', 'get', self.CMD_ROLEBINDINGS] + namespace_arg + ['--output=json']
         cmd_str = ' '.join(cmd)
+
         print("Calling: '{}'.".format(cmd_str))
 
-        json_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
-        d = json.loads(json_out)
+        try:
+            json_out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+            d = json.loads(json_out)
+
+        except CalledProcessError as e:
+            print(called_process_error_repr(e))
+            raise e
 
         bindings = []
 

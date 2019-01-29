@@ -15,6 +15,15 @@ class RoleBinding(object):
         self.role_ref = RoleRef(d.get("roleRef"))
         self.subjects = Subject.from_dist_list(d.get("subjects"))
 
+    def __repr__(self):
+        return "Binding {n}@{ns} (UID: {uid}) between role '{r}' and groups {g}.".format(
+            n=self.metadata.name,
+            ns=self.metadata.namespace,
+            uid=self.metadata.uid,
+            r=self.role_ref.name,
+            g=self.group_names
+        )
+
 
 class RoleRef(object):
 
